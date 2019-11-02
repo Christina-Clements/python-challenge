@@ -35,7 +35,7 @@ Previous_Value = int(data[1][1])
 
 for i in range(2, len(data)):
     Current_Value = int(data[i][1])
-    Differences.append(abs(int(Current_Value)-int(Previous_Value)))
+    Differences.append(int(Current_Value)-int(Previous_Value))
     Previous_Value = Current_Value
 
 Sum_Differences = sum(Differences)
