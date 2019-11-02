@@ -19,23 +19,25 @@ with open(PyBank_csv, newline='') as csvfile:
 with open(PyBank_csv, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     data = list(csvreader)
-    row_count = len(data)
+    row_count = (len(data)-1)
     print(f'Total months = {row_count}. ')
 
 Total_ProfitLosses=0
-for i in (range(1, row_count)):
+for i in (range(1, (row_count + 1))):
     
     Total_ProfitLosses = (Total_ProfitLosses + int(data[i][1]))
 
 print(f'Total Profit/ Losses = ${Total_ProfitLosses}')
 
-Average_Change = round((Total_ProfitLosses/row_count), 2)
+Differences = []
+Previous_Value = int(data[1][1])
 
-print(f'Average Change = ${Average_Change}')
+for i in range(2, len(data)-1):
+    Current_Value = int(data[i][1])
+    Differences.append(int(Current_Value)-int(Previous_Value))
+    Previous_Value = Current_Value
+print(Differences)
 
-
-
-        
 
 
 
