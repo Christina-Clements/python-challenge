@@ -27,7 +27,12 @@ for i in (range(1, row_count)):
     
     Total_ProfitLosses = (Total_ProfitLosses + int(data[i][1]))
 
-print(f'Total Profit/ Losses equals {Total_ProfitLosses}.')
+print(f'Total Profit/ Losses = ${Total_ProfitLosses}')
+
+Average_Change = round((Total_ProfitLosses/row_count), 2)
+
+print(f'Average Change = ${Average_Change}')
+
 
 
         
