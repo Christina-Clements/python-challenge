@@ -22,6 +22,13 @@ with open(PyBank_csv, newline='') as csvfile:
     row_count = len(data)
     print(f'Total months = {row_count}. ')
 
+Total_ProfitLosses=0
+for i in (range(1, row_count)):
+    
+    Total_ProfitLosses = (Total_ProfitLosses + int(data[i][1]))
+
+print(f'Total Profit/ Losses equals {Total_ProfitLosses}.')
+
 
         
 
