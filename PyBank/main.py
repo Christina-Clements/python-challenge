@@ -1,6 +1,5 @@
 import os
 import csv
-import math
 
 PyBank_csv = os.path.join('..', 'PyBank', '03-Python_Instructions_PyBank_Resources_budget_data.csv')
 
@@ -21,7 +20,7 @@ with open(PyBank_csv, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     data = list(csvreader)
     row_count = (len(data)-1)
-    print(f'Total months = {row_count}. ')
+    print(f'Total months = {row_count} ')
 
 Total_ProfitLosses=0
 for i in (range(1, (row_count + 1))):
