@@ -2,7 +2,7 @@ import os
 import csv
 
 PyPoll_csv = os.path.join('..', 'PyPoll', '03-Python_Instructions_PyPoll_Resources_election_data.csv')
-
+f = open('election.txt', 'w+')
 with open(PyPoll_csv, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
@@ -10,9 +10,10 @@ with open(PyPoll_csv, newline='') as csvfile:
     input = 'PyPoll_csv'
     row_count = (len(data)-1)
 print(f'Election Results')
-print(f'----------------')    
+f.write(f'Election Results\n')
+print(f'----------------')   
 print(f'Total Votes = {row_count} ')
-
+f.write(f'Total Votes = {row_count} \n')
 with open(PyPoll_csv, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     header = next(csvreader)
@@ -36,6 +37,7 @@ with open(PyPoll_csv, 'r') as csvfile:
                 Total_Votes += 1
         votes[candidate] = Total_Votes
         print(f'{candidate} : {round((Total_Votes/row_count)*100, 3)}%  ({Total_Votes})')
+        f.write(f'{candidate} : {round((Total_Votes/row_count)*100, 3)}%  ({Total_Votes})\n')
     print(f'----------------')
     pValue = 0
     for election, value in votes.items():
@@ -43,7 +45,11 @@ with open(PyPoll_csv, 'r') as csvfile:
             winner = election
         pValue = value
     print(f'Winner: {winner}')
+    f.write(f'Winner: {winner}\n')
     print(f'----------------')
+f.close()
+
+
 
 
 
