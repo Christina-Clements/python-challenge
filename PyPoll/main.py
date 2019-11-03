@@ -5,9 +5,7 @@ PyPoll_csv = os.path.join('..', 'PyPoll', '03-Python_Instructions_PyPoll_Resourc
 
 with open(PyPoll_csv, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
-    print(csvreader)
     csv_header = next(csvreader)
-    print(f'CSV Header: {csv_header}')
     data = list(csvreader)
     input = 'PyPoll_csv'
     row_count = (len(data)-1)
@@ -29,15 +27,23 @@ with open(PyPoll_csv, 'r') as csvfile:
         else:
             used.append(candidate)
     candidate_name= used
-    print(candidate_name)
-    
+    print(f'----------------')
+    votes = {}
     for candidate in candidate_name:
         Total_Votes=0
         for row in data:
             if row[2] == candidate:
                 Total_Votes += 1
-        print(f'{candidate} : {Total_Votes}')
-            
+        votes[candidate] = Total_Votes
+        print(f'{candidate} : {round((Total_Votes/row_count)*100, 3)}%  ({Total_Votes})')
+    print(f'----------------')
+    pValue = 0
+    for election, value in votes.items():
+        if value > pValue:
+            winner = election
+        pValue = value
+    print(f'Winner: {winner}')
+    print(f'----------------')
 
 
 
